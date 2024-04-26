@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block content %}
+<div
+  class="container-fluid"
+  style="
+    background-image: url(https://img.freepik.com/free-photo/top-view-delicious-food-with-copy-space_23-2150873986.jpg?w=1060);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+    position: sticky;
+    width: 100%;
+  "
+>
+  <div
+    class="container"
+    style="display: grid; place-items: center; margin-top: 100px"
+  >
+    <div
+      style="
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+          'Lucida Sans', Arial, sans-serif;
+
+        max-width: 600px;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+        color: white;
+      "
+    >
+      <h1 style="font-size: 3em; margin-bottom: 20px">
+        Welcome to our <br />
+        Online Food Ordering System
+      </h1>
+      <p style="font-weight: bold; font-size: 1.5em; margin-bottom: 40px">
+        Order your favorite food online and get it delivered to your doorstep!
+      </p>
+      <a href="{% url 'popularDishes' %}" class="btn btn-outline-light"
+        >Explore Dishes</a
+      >
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

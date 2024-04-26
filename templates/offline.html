@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container mt-5">
+  <p>
+    We're thrilled to inform you that your order has been successfully placed.
+    Our team is already hard at work to ensure that your items are carefully
+    prepared and promptly delivered to you.
+  </p>
+
+  <br /><br />
+  <div class="row pb-2">
+    {% for item in cart %}
+    <div
+      class="col-md-4 container p-5"
+      style="border: 4px solid black; background-color: rgb(228, 229, 229)"
+    >
+      <h4>
+        Food item :
+        <span style="font-weight: lighter; font-size: 20px">{{item.item}}</span>
+      </h4>
+      <h4>
+        Quantity :
+        <span style="font-weight: lighter; font-size: 20px"
+          >{{item.quantity}}</span
+        >
+      </h4>
+    </div>
+    {% endfor %}
+
+    <h4 align="center" style="margin-top: 20px">
+      Total Bill :
+      <span style="font-weight: lighter; font-size: 20px">{{total_price}}</span>
+    </h4>
+    <h4 align="center">
+      Delivery Address :
+      <span style="font-weight: lighter; font-size: 20px">{{address}}</span>
+    </h4>
+  </div>
+  <a href="/" class="btn btn-dark d-block mx-auto w-50">Home </a>
+</div>
+{% endblock content %}

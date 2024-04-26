@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block content %}
+
+<br /><br />
+<br /><br />
+<div
+  class="container-fluid"
+  style="display: grid; place-items: center; margin-top: 50px"
+>
+  {% if status %}
+  <div style="border: 2px solid black; padding: 20px; text-align: center">
+    <p>
+      We are thrilled to inform you that your order has been successfully
+      placed. Our team is already hard at work to ensure that your items are
+      carefully prepared and promptly delivered to you
+    </p>
+    <a href="/" class="btn btn-dark d-block mx-auto w-25">Home</a>
+  </div>
+  {% else %}
+  <div style="border: 2px solid lightblue; padding: 20px; text-align: center">
+    <p>
+      Apologies, the input provided appears to be incorrect. Please review and
+      try again. Thank you for your understanding
+    </p>
+    <a href="{% url 'online' %}" class="btn btn-dark d-block mx-auto w-25"
+      >Goback</a
+    >
+  </div>
+  {% endif %}
+
+  <!-- <a href="{% url 'online' %}" class="btn btn-primary d-block mx-autow-25">GoBack</a> -->
+</div>
+
+{% endblock content %}

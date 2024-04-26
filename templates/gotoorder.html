@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block content %}
+<style>
+  .s:hover {
+    box-shadow: 0 0 50px #1a1a1a;
+  }
+</style>
+<div
+  class="container w-50"
+  style="margin-top: 50px; display: grid; place-items: center"
+>
+  <h4 style="text-align: center; margin-top: 50px">
+    Total Bill Amount : {{ total_price }} /-
+  </h4>
+  <br /><br /><br />
+  <div
+    class="container s"
+    style="
+      padding: 20px;
+      border: 2px solid black;
+      display: grid;
+      place-items: center;
+      background-color: rgb(228, 229, 229);
+    "
+  >
+    <form method="get">
+      {% csrf_token %}
+      <a class="btn btn-dark" href="{% url 'offline' %}" type="submit"
+        >Payment On Delivery
+      </a>
+    </form>
+    <br />
+    <form method="get">
+      {% csrf_token %}
+
+      <a class="btn btn-dark" href="{% url 'online' %}" type="submit"
+        >Online Payment
+      </a>
+    </form>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,74 @@
+{% extends "base.html" %} {% block cssScript %}
+<style>
+  /* Style for the shopping cart header */
+  .cart-header {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 15px;
+      margin-bottom: 20px;
+      text-align: center;
+  }
+
+  /* Style for the total price */
+  .total-price {
+      font-weight: bold;
+      margin-top: 20px;
+      text-align: right;
+  }
+
+  /* Set fixed dimensions for the cards */
+  .card {
+      width: 18rem; /* Adjust as needed */
+      height: auto;
+  }
+
+  /* Style for the card image */
+  .card-img-top {
+      height: 200px; /* Adjust as needed */
+      {% comment %} object-fit: contain; {% endcomment %}
+      object-fit: cover;
+  }
+  .card:hover{
+      border : 2px solid black;;
+  }
+</style>
+{% endblock cssScript %} {% block content %}
+<div class="container" style="margin-top: 100px">
+  <!-- <h1 class="cart-header">Shopping Cart</h1> -->
+  <h1 class="mb-4 text-center rounded-1 text-white bg-black p-1">User Cart</h1>
+  <div class="row">
+    {% for item in cart_items %}
+    <div class="col-md-4 mb-3">
+      <div
+        class="card"
+        style="background-color: aliceblue; transition: 0.5s ease"
+      >
+        <img
+          src="{{ item.item.ImageURL.url }}"
+          alt="{{ item.item.Name }}"
+          class="card-img-top"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ item.item.Name }}</h5>
+          <p class="card-text">Price: ₹{{ item.item.Price }}</p>
+          <p class="card-text">Quantity: {{ item.quantity }}</p>
+          <p class="card-text">Subtotal: ₹{{ item.subtotal }}</p>
+          <form
+            action="{% url 'remove_from_cart' item.item.MenuItemID %}"
+            method="post"
+          >
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Remove</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <form action="{% url 'gotoorder'  %}" method="post">
+    {% csrf_token %}
+    <p class="total-price">Total Price: ₹{{ total_price }}</p>
+    <button type="submit" class="btn btn-dark float-end">Order !!</button>
+  </form>
+</div>
+{% endblock content %}

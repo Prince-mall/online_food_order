@@ -1,0 +1,120 @@
+<style>
+  @media screen and (max-width: 768px) {
+    a {
+      font-size: 5px;
+      /* width: 60px; */
+    }
+    .container {
+      justify-content: space-between;
+    }
+  }
+</style>
+<header
+  class="p-3 mb-3 bg-white text-white rounded-3 fixed-top"
+  style="box-shadow: 0 0 20px 0 black"
+>
+  <div class="container justify-content-between">
+    <div class="d-flex align-items-center">
+      <a
+        href="/"
+        class="d-flex align-items-center mb-2 mb-lg-0 text-white p-1 mx-1 fw-bold text-decoration-none bg-white rounded-pill"
+      >
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/8161/8161159.png"
+          alt=""
+          style="width: 30px; height: 30px; border-radius: 50%"
+        />
+        {% comment %}
+        <svg
+          class="bi me-2"
+          width="40"
+          height="32"
+          role="img"
+          aria-label="Bootstrap"
+        >
+          <use xlink:href="#bootstrap" />
+        </svg>
+        {% endcomment %}
+      </a>
+
+      <ul
+        class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-align-content-between mb-md-0"
+      >
+        <li>
+          <a
+            href="{% url 'aboutUs' %}"
+            class="nav-link px-2 text-white mb-2 mb-lg-0 bg-black p-1 mx-2 text-decoration-none bg-light rounded-1 fw-bold"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            href="{% url 'popularDishes' %}"
+            class="nav-link mx-1 bg-light p-1 text-white rounded-1 fw-bold mb-2 mb-lg-0 text-primary p-1 mx-2 text-decoration-none bg-black rounded-1"
+            >Dishes</a
+          >
+        </li>
+        <li>
+          <a
+            href="{% url 'view_cart' %}"
+            class="nav-link px-2 text-white mb-2 mb-lg-0 fw-bold p-1 mx-2 text-decoration-none bg-black rounded-1"
+            >Cart</a
+          >
+        </li>
+      </ul>
+      {% comment %}
+      <form
+        class="d-flex col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
+        method="post"
+      >
+        {% csrf_token %}
+        <input
+          type="search"
+          class="form-control"
+          name="search"
+          placeholder="Search..."
+          aria-label="Search"
+          required
+        />
+        <button class="btn btn-primary text-white" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      {% endcomment %} {% if user.is_authenticated %}
+      <div class="dropdown text-end">
+        <a
+          href="#"
+          class="d-block text-black text-decoration-none dropdown-toggle"
+          id="dropdownUser1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <img
+            src="https://img.freepik.com/premium-photo/3d-business-peoples-person-icon_745528-46376.jpg?w=740"
+            alt="mdo"
+            width="32"
+            height="32"
+            class="rounded-circle"
+          />
+        </a>
+        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+          <li><a class="dropdown-item" href="#">New project...</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li>
+            <a class="dropdown-item" href="{% url 'user_profile' %}">Profile</a>
+          </li>
+          <li><hr class="dropdown-divider" /></li>
+          <li>
+            <a class="dropdown-item" href="{% url 'logout' %}">Sign out</a>
+          </li>
+        </ul>
+      </div>
+      {% else %}
+      <div class="col-md-3 text-end">
+        <a class="btn btn-outline-light me-2" href="{% url 'login' %}">Login</a>
+        <a class="btn btn-primary" href="{% url 'register' %}">Sign-up</a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</header>
